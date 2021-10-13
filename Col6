@@ -1,0 +1,30 @@
+using System;
+
+namespace ConsoleApp4
+{
+    class Program
+    {
+        /*Col6. * Даны два массива из целых чисел от 1 до 100: длины n и длины N (n < N). 
+         * Определить для каждого подмассива (непрерывный отрезок массива) 
+         * второго массива длины n, является ли он перестановкой первого массива.*/
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Test(new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { 9, 2, 3, 4 })); //true
+            Console.WriteLine(Test(new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { 4, 2, 5 })); //false
+        }
+        static bool Test(int[] bigArray, int[] smallArray)
+        {
+            for (int i = 0; i < smallArray.Length - 1; i++)
+            {
+                foreach (int e in bigArray)
+                {
+                    if (e == smallArray[i] && bigArray[Array.IndexOf(bigArray, e) + 1] == smallArray[i+1])
+                    {
+                        return true;   
+                    }
+                }
+            }
+            return false;
+        }
+    }
+}
